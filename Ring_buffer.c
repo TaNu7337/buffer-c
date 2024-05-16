@@ -1,4 +1,3 @@
-#include <avr/io.h>
 #include "Ring_Buffer.h"
 
 // 環状バッファを初期化
