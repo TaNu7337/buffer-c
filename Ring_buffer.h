@@ -12,7 +12,9 @@ typedef uint8_t ring_buffer_index_t;
     # error "を#defineで定義してください"
 #endif
 
+#include <stdint.h>
 #include <stdbool.h>
+
 typedef struct
 {
     //バッファ配列のポインタ
