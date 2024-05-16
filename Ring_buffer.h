@@ -1,6 +1,8 @@
 #ifndef RING_BUFFER_H
 #define RING_BUFFER_H
 
+#include <stdint.h>
+#include <stdbool.h>
 
 #if defined(RING_BUFFER_LENGTH_2_BYTE)
 typedef uint16_t ring_buffer_index_t;
@@ -12,7 +14,6 @@ typedef uint8_t ring_buffer_index_t;
     # error "を#defineで定義してください"
 #endif
 
-#include <stdbool.h>
 typedef struct
 {
     //バッファ配列のポインタ
