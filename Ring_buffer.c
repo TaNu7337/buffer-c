@@ -5,7 +5,7 @@
 // arg 2, リングバッファに使用する配列
 // arg 3, リングバッファの長さ
 
-void Ring_Buffer_init(Ring_Buffer *_this, uint8_t *_array, ring_buffer_index_t _length)
+void Ring_Buffer_init(Ring_Buffer *_this, uint8_t *_array, size_t _length)
 {
     _this->buffer = _array;
 
@@ -70,9 +70,9 @@ bool Ring_Buffer_write(Ring_Buffer *_this, uint8_t _data)
 }
 
 //! 配列のデータを書き込む
-bool Ring_Buffer_write_array(Ring_Buffer *_this, uint8_t *_array, ring_buffer_index_t _length)
+bool Ring_Buffer_write_array(Ring_Buffer *_this, uint8_t *_array, size_t _length)
 {
-    for (ring_buffer_index_t i = 0; i < _length; i++)
+    for (size_t i = 0; i < _length; i++)
     {
         //! 書き込めなかった場合
         if (!Ring_Buffer_write(_this, _array[i]))
@@ -86,7 +86,7 @@ bool Ring_Buffer_write_array(Ring_Buffer *_this, uint8_t *_array, ring_buffer_in
 //! 文字列のデータを書き込む
 bool Ring_Buffer_write_str(Ring_Buffer *_this, char *_string)
 {
-    for (ring_buffer_index_t i = 0; _string[i] != '\0'; i++)
+    for (size_t i = 0; _string[i] != '\0'; i++)
     {
         //! 書き込めなかった場合
         if (!Ring_Buffer_write(_this, (uint8_t)_string[i]))
@@ -155,9 +155,9 @@ bool Ring_Buffer_fetch(Ring_Buffer *_this, uint8_t *_data)
 }
 
 //! 配列に読み出す
-bool Ring_Buffer_read_array(Ring_Buffer *_this, uint8_t *_array, ring_buffer_index_t _length)
+bool Ring_Buffer_read_array(Ring_Buffer *_this, uint8_t *_array, size_t _length)
 {
-    for (ring_buffer_index_t i = 0; i < _length; i++)
+    for (size_t i = 0; i < _length; i++)
     {
         //! 書き込めなかった場合
         if (!Ring_Buffer_read(_this, &_array[i]))
@@ -175,7 +175,7 @@ bool Ring_Buffer_read_str(Ring_Buffer *_this, char *_string)
     bool _return_data = false;
 
     //! iをインクリメントするだけ
-    for (ring_buffer_index_t i = 0;; i++)
+    for (size_t i = 0;; i++)
     {
         //! 読み出した文字が入る変数
         char _read_data;
@@ -212,7 +212,7 @@ void Ring_Buffer_reset_force(Ring_Buffer *_this)
     Ring_Buffer_reset(_this);
 
     //! データもすべて0にする
-    for (ring_buffer_index_t i = 0; i < _this->max; i++)
+    for (size_t i = 0; i < _this->max; i++)
     {
         _this->buffer[i] = 0;
     }
@@ -260,12 +260,12 @@ bool Ring_Buffer_is_data(Ring_Buffer *_this)
 
 // 環状バッファ内のデータの長さを返す
 // arg 1, Ring_Bufferの構造体ポインタ
-ring_buffer_index_t Ring_Buffer_is_length(Ring_Buffer *_this)
+size_t Ring_Buffer_is_length(Ring_Buffer *_this)
 {
     return _this->length;
 }
 
-ring_buffer_index_t Ring_Buffer_is_max(Ring_Buffer *_this)
+size_t Ring_Buffer_is_max(Ring_Buffer *_this)
 {
     return _this->length;
 }

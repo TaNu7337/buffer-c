@@ -36,7 +36,7 @@ typedef struct
 //arg 1, Ring_Bufferの構造体ポインタ
 //arg 2, リングバッファに使用する配列
 //arg 3, リングバッファの長さ(byte単位)
-void Ring_Buffer_Bit_init(Ring_Buffer_Bit *, uint8_t *, ring_buffer_index_t);
+void Ring_Buffer_Bit_init(Ring_Buffer_Bit *, uint8_t *, size_t);
 
 //書き込み上限に達しても書き込む
 //arg 1, Ring_Bufferの構造体ポインタ

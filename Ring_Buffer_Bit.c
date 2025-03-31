@@ -8,7 +8,7 @@
 // arg 1, Ring_Bufferの構造体ポインタ
 // arg 2, リングバッファに使用する配列
 // arg 3, リングバッファの長さ(byte単位)
-void Ring_Buffer_Bit_init(Ring_Buffer_Bit *_this, uint8_t *_array, ring_buffer_index_t _length)
+void Ring_Buffer_Bit_init(Ring_Buffer_Bit *_this, uint8_t *_array, size_t _length)
 {
     Ring_Buffer_init(&_this->ring_buffer, _array, _length);
 
